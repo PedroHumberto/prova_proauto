@@ -51,5 +51,5 @@ namespace RegistroDePlacas.Application.Handlers
                 return new GenericCommandResult(false, ex.Message, ex);
             }
         }
-    }dot
+    }
 }

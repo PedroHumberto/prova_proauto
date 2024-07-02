@@ -8,5 +8,6 @@ namespace RegistroDePlacas.Domain.Usuarios
     public interface IUsuarioRepository
     {
         Task CriarUsuario(Usuario usuario);
+        Task<Usuario> GetUsuarioPorCPF(CPF cpf);
     }
 }

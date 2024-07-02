@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RegistroDePlacas.Application.Abstractions;
+using RegistroDePlacas.Application.Commands;
+using RegistroDePlacas.Application.Handlers;
 using RegistroDePlacas.Domain.Usuarios;
 using RegistroDePlacas.Infrastructure.Data;
 using RegistroDePlacas.Infrastructure.Repositories;
@@ -25,6 +27,7 @@ namespace RegistroDePlacas.Infrastructure
             });
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IHandler<CriarUsuarioCommand>, CriarUsuarioHandler>();
 
             services.AddSingleton<ISqlConnectionFactory> (_ => new SqlConnectionFactory(connectionString));
             return services;

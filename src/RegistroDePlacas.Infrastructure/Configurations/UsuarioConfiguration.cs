@@ -18,8 +18,13 @@ namespace RegistroDePlacas.Infrastructure.Configurations
 
             builder.OwnsOne(usuario => usuario.Endereco);
 
+            
+            builder.Property(user => user.CPF)
+                .HasMaxLength(11)
+                .HasConversion(CPF => CPF.Numero, value => new CPF(value));
+
             builder.HasIndex(usuario => usuario.CPF).IsUnique();
-            builder.HasIndex(usuario => usuario.PlacaDoVeiculo).IsUnique();
+            builder.HasIndex(usuario => usuario.PlacaDoVeiculo);
         }
     }
 }

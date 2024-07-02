@@ -1,3 +1,4 @@
+using System.Text.Json;
 using RegistroDePlacas.Application.Abstractions;
 using RegistroDePlacas.Application.Commands;
 using RegistroDePlacas.Application.Dto;
@@ -33,6 +34,13 @@ namespace RegistroDePlacas.Application.Handlers
                     command.PlacaDoVeiculo
                 );
 
+                var usuarioExistente = await _repository.GetUsuarioPorCPF(usuario.CPF);
+
+                if(usuarioExistente is not null)
+                {
+                    return new GenericCommandResult(false, "CPF já cadastrado", command);
+                }
+
                 await _repository.CriarUsuario(usuario);
 
                 var usuarioDto = new CriaUsuarioDto
@@ -48,6 +56,7 @@ namespace RegistroDePlacas.Application.Handlers
             }
             catch (Exception ex)
             {
+
                 return new GenericCommandResult(false, ex.Message, ex);
             }
         }

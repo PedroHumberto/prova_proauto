@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using RegistroDePlacas.Domain.Usuarios;
 
 namespace RegistroDePlacas.Infrastructure.Repositories
@@ -19,6 +20,13 @@ namespace RegistroDePlacas.Infrastructure.Repositories
         public async Task CriarUsuario(Usuario usuario)
         {
             await _context.Usuarios.AddAsync(usuario);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<Usuario> GetUsuarioPorCPF(CPF cpf)
+        {
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.CPF == cpf);
+
+            return usuario;
         }
     }
 }

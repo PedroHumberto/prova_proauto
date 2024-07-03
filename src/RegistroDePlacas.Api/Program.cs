@@ -20,6 +20,8 @@ if( app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigrations();
     //app.SeedData();
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation("O ambiente atual é Development");
 
 }
 

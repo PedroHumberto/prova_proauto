@@ -14,7 +14,7 @@ namespace RegistroDePlacas.Infrastructure.Data
 
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("/src/RegistroDePlacas.Api/appsettings.json")
                 .Build();
 
             var connectionString = configuration.GetConnectionString("Database");

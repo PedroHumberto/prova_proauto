@@ -9,5 +9,6 @@ namespace RegistroDePlacas.Domain.Usuarios
     {
         Task CriarUsuario(Usuario usuario);
         Task<Usuario> GetUsuarioPorCPF(CPF cpf);
+        Task UpdateUsuario(Usuario usuario);
     }
 }

@@ -24,9 +24,18 @@ namespace RegistroDePlacas.Infrastructure.Repositories
         }
         public async Task<Usuario> GetUsuarioPorCPF(CPF cpf)
         {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.CPF == cpf);
+            Usuario? usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.CPF == cpf);
 
             return usuario;
+        }
+
+        public async Task UpdateUsuario(Usuario usuario)
+        {
+
+            _context.Update(usuario);
+
+            await _context.SaveChangesAsync();
+
         }
     }
 }

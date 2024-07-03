@@ -43,7 +43,7 @@ namespace RegistroDePlacas.Application.Handlers
 
                 await _repository.CriarUsuario(usuario);
 
-                var usuarioDto = new CriaUsuarioDto
+                var usuarioDto = new UsuarioDto
                 (
                     usuario.Nome,
                     usuario.CPF,
@@ -56,8 +56,7 @@ namespace RegistroDePlacas.Application.Handlers
             }
             catch (Exception ex)
             {
-
-                return new GenericCommandResult(false, ex.Message, ex);
+                return new GenericCommandResult(false, ex.Message, command);
             }
         }
     }

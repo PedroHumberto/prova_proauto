@@ -1,0 +1,67 @@
+@model RegistroDePlacas.Web.Models.UsuarioViewModel
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cadastro de Usuário</h1>
+    
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <form asp-action="Registrar" method="post">
+        <div class="form-group">
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" id="Nome" name="Nome" required />
+        </div>
+        <div class="form-group">
+            <label for="CPF">CPF</label>
+            <input type="text" class="form-control" id="CPF" name="CPF" required />
+        </div>
+        <div class="form-group">
+            <label for="Telefone">Telefone</label>
+            <input type="text" class="form-control" id="Telefone" name="Telefone" required />
+        </div>
+        <div class="form-group">
+            <label for="PlacaDoVeiculo">Placa do Veículo</label>
+            <input type="text" class="form-control" id="PlacaDoVeiculo" name="PlacaDoVeiculo" required />
+        </div>
+
+        <h4>Endereço</h4>
+        <div class="form-group">
+            <label for="Endereco_Rua">Rua</label>
+            <input type="text" class="form-control" id="Endereco_Rua" name="Endereco.Rua" required />
+        </div>
+        <div class="form-group">
+            <label for="Endereco_Numero">Número</label>
+            <input type="text" class="form-control" id="Endereco_Numero" name="Endereco.Numero" required />
+        </div>
+        <div class="form-group">
+            <label for="Endereco_Complemento">Complemento</label>
+            <input type="text" class="form-control" id="Endereco_Complemento" name="Endereco.Complemento" />
+        </div>
+        <div class="form-group">
+            <label for="Endereco_Bairro">Bairro</label>
+            <input type="text" class="form-control" id="Endereco_Bairro" name="Endereco.Bairro" required />
+        </div>
+        <div class="form-group">
+            <label for="Endereco_CEP">CEP</label>
+            <input type="text" class="form-control" id="Endereco_CEP" name="Endereco.CEP" required />
+        </div>
+        <div class="form-group">
+            <label for="Endereco_Cidade">Cidade</label>
+            <input type="text" class="form-control" id="Endereco_Cidade" name="Endereco.Cidade" required />
+        </div>
+        <div class="form-group">
+            <label for="Endereco_Estado">Estado</label>
+            <input type="text" class="form-control" id="Endereco_Estado" name="Endereco.Estado" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cadastrar Usuário</button>
+    </form>
+</div>

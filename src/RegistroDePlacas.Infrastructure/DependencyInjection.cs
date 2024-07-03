@@ -28,6 +28,7 @@ namespace RegistroDePlacas.Infrastructure
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IHandler<CriarUsuarioCommand>, CriarUsuarioHandler>();
+            services.AddTransient<IHandler<UpdateEnderecoCommand>, UpdateEnderecoHandler>();
 
             services.AddSingleton<ISqlConnectionFactory> (_ => new SqlConnectionFactory(connectionString));
             return services;

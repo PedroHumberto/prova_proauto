@@ -31,5 +31,12 @@ namespace RegistroDePlacas.Domain.Usuarios
             return ususario;
         }
 
+        public Endereco UpdateEndereco(Endereco endereco)
+        {
+            Endereco = endereco;
+
+            return Endereco;
+        }
+
     }
 }

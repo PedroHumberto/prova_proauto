@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Registro de Placas</h1>
+    <p><a asp-controller="Home" asp-action="Registrar">Registre-se Aqui</a></p>
+    <p><a asp-controller="Home" asp-action="Atualizar">Atualize Aqui</a></p>
+        @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+        {
+            <div class="alert alert-success">
+                @ViewBag.SuccessMessage
+            </div>
+        }
+
+    </div>
+</div>

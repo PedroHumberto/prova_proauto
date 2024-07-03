@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace RegistroDePlacas.Domain.Usuarios
 {
@@ -12,6 +8,7 @@ namespace RegistroDePlacas.Domain.Usuarios
 
         public CPF(string numero)
         {
+            numero = RemoverNaoNumericos(numero);
             if (!EhValido(numero))
             {
                 throw new ArgumentException("CPF inválido");
@@ -22,9 +19,7 @@ namespace RegistroDePlacas.Domain.Usuarios
 
         private bool EhValido(string cpf)
         {
-            // Remove caracteres não numéricos
-            cpf = Regex.Replace(cpf, @"[^\d]", "");
-
+            // CPF já está sem caracteres não numéricos nesta etapa
             if (cpf.Length != 11)
             {
                 return false;
@@ -59,6 +54,11 @@ namespace RegistroDePlacas.Domain.Usuarios
             var segundoDigitoVerificador = (soma % 11) < 2 ? 0 : 11 - (soma % 11);
 
             return cpfArray[10] == segundoDigitoVerificador;
+        }
+
+        private string RemoverNaoNumericos(string input)
+        {
+            return Regex.Replace(input, @"[^\d]", "");
         }
     }
 }

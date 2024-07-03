@@ -8,20 +8,33 @@ namespace RegistroDePlacas.Api.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
-        private readonly  IHandler<CriarUsuarioCommand> _handler;
+        private readonly  IHandler<CriarUsuarioCommand> _criarUsuariohandler;
+        private readonly  IHandler<UpdateEnderecoCommand> _updateEnderecoHandler;
 
-        public UsuarioController(IHandler<CriarUsuarioCommand> handler)
+        public UsuarioController(IHandler<CriarUsuarioCommand> criarUsuariohandler, IHandler<UpdateEnderecoCommand> updateEnderecoHandler)
         {
-            _handler = handler;
+            _criarUsuariohandler = criarUsuariohandler;
+            _updateEnderecoHandler = updateEnderecoHandler;
         }
 
-        [HttpPost]
+        [HttpPost("cadastrar")]
         public async Task<IActionResult> CriarUsuario([FromBody]CriarUsuarioCommand command)
         {
-            GenericCommandResult? result = (GenericCommandResult)await _handler.Handle(command);
+            GenericCommandResult? result = (GenericCommandResult)await _criarUsuariohandler.Handle(command);
             if (!result.Success)
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
+            }
+            return Ok(result);
+        }
+
+        [HttpPost("update_endereco")]
+        public async Task<IActionResult> UpdateEndereco([FromBody]UpdateEnderecoCommand command)
+        {
+            GenericCommandResult? result = (GenericCommandResult)await _updateEnderecoHandler.Handle(command);
+            if (!result.Success)
+            {
+                return BadRequest(result);
             }
             return Ok(result);
         }

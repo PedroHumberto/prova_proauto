@@ -12,7 +12,7 @@ using RegistroDePlacas.Infrastructure;
 namespace RegistroDePlacas.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240702003307_First_Migration")]
+    [Migration("20240702231646_First_Migration")]
     partial class First_Migration
     {
         /// <inheritdoc />
@@ -67,30 +67,37 @@ namespace RegistroDePlacas.Infrastructure.Migrations
 
                             b1.Property<string>("Bairro")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Bairro");
 
                             b1.Property<string>("CEP")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("CEP");
 
                             b1.Property<string>("Cidade")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Cidade");
 
                             b1.Property<string>("Complemento")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Complemento");
 
                             b1.Property<string>("Estado")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Estado");
 
                             b1.Property<string>("Numero")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Numero");
 
                             b1.Property<string>("Rua")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("Rua");
 
                             b1.HasKey("UsuarioId");
 

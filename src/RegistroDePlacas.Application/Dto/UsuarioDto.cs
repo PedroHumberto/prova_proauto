@@ -6,7 +6,7 @@ using RegistroDePlacas.Domain.Usuarios;
 
 namespace RegistroDePlacas.Application.Dto
 {
-    public record CriaUsuarioDto
+    public record UsuarioDto
     (
         string Nome,
         CPF cpf,

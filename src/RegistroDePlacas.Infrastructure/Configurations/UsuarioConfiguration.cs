@@ -16,8 +16,16 @@ namespace RegistroDePlacas.Infrastructure.Configurations
 
             builder.HasKey(usuario => usuario.Id);
 
-            builder.OwnsOne(usuario => usuario.Endereco);
-
+            builder.OwnsOne(u => u.Endereco, endereco =>
+                {
+                    endereco.Property(e => e.Rua).HasColumnName("Rua");
+                    endereco.Property(e => e.Numero).HasColumnName("Numero");
+                    endereco.Property(e => e.Complemento).HasColumnName("Complemento");
+                    endereco.Property(e => e.Bairro).HasColumnName("Bairro");
+                    endereco.Property(e => e.CEP).HasColumnName("CEP");
+                    endereco.Property(e => e.Cidade).HasColumnName("Cidade");
+                    endereco.Property(e => e.Estado).HasColumnName("Estado");
+                });
             
             builder.Property(user => user.CPF)
                 .HasMaxLength(11)
